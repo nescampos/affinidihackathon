@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -Immigrant Verifier</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                @Html.ActionLink("Immigrant Verifier", "Index", "Home", new { area = "" }, new { @class = "d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none" })
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>@Html.ActionLink("About", "Index", "Home", null, new { @class = "nav-link px-2 text-secondary" })</li>
+                </ul>
+                <div class="text-end">
+                    @if (HttpContext.Current.Session["Username"] != null)
+                    {
+                        @Html.ActionLink("Logoff", "Logoff", "Home", null, new { @class = "nav-link px-2 text-secondary" })
+                    }
+                    else
+                    {
+                        if (HttpContext.Current.Session["Admin"] != null)
+                        {
+                            @Html.ActionLink("Logoff", "Logoff", "Admin", null, new { @class = "nav-link px-2 text-secondary" })
+                        }
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Immigrant Verifier</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

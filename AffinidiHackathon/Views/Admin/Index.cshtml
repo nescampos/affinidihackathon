@@ -1,0 +1,36 @@
+﻿@model AffinidiHackathon.Models.IndexAdminViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+        <div class="col-lg-3 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Pending credentials</h1>
+            <p class="col-lg-10 fs-4">Here you can verify and sign the credentials for your citizens.</p>
+        </div>
+        <div class="col-10 mx-auto col-lg-8">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Credentials count</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var credential in Model.Pending)
+                    {
+                        <tr>
+                            <td>@credential.Key</td>
+                            <td>@credential.Value.Count()</td>
+                            <td>@Html.ActionLink("View pending", "ViewCredential", new { user = credential.Key })</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

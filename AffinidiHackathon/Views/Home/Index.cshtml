@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Welcome to Immigrant Verifier";
+}
+
+<div class="jumbotron">
+    <h1>Immigrant Verifier</h1>
+    <p class="lead">Immigrant Verifier is a service to obtain, sign and verify credentials for immigrants, avoiding face-to-face bureaucratic processes in consulates or embassies, or for people who leave their countries in search of new opportunities in their destinations.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Are you an immigrant?</h2>
+        <p>
+            You can enter here to create your credential, enter your data and that a person from your government can sign it, so that it is valid and you can share it with whoever you want.
+        </p>
+        <p>@Html.ActionLink("Create credential", "Login", "Home", null, new { @class = "btn btn-primary btn-lg px-4 me-sm-3" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Sign credentials as government</h2>
+        <p>If you are a government institution, you can create your account and sign the credentials created by your citizens.</p>
+
+        <p>@Html.ActionLink("Sign credentials", "Index", "Admin", null, new { @class = "btn btn-success btn-lg px-4" })</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Verify a credential</h2>
+        <p>If you are an institution and you must verify the identity of a person with their credentials, you must enter here</p>
+        <p>@Html.ActionLink("Check credentials", "Index", "Verifier", null, new { @class = "btn btn-outline-secondary btn-lg px-4" })</p>
+    </div>
+</div>

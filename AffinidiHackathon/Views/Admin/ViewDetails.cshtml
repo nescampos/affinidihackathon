@@ -1,0 +1,96 @@
+﻿@model AffinidiHackathon.Models.ViewDetailsAdminViewModel
+@{
+    ViewBag.Title = "ViewDetails";
+}
+
+<h2>View Details</h2>
+
+
+@using (Html.BeginForm("SignCredential", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("id", Model.Credential.unsignedCredential.id.Replace("claimId:", ""))
+    @Html.Hidden("user", Model.User)
+
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            Name:
+            <div class="col-md-10">
+                @Model.Credential.unsignedCredential.credentialSubject.data.Name
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            Birth Date:
+            <div class="col-md-10">
+                @Model.Credential.unsignedCredential.credentialSubject.data.BirthDate
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            Country:
+            <div class="col-md-10">
+                @Model.Credential.unsignedCredential.credentialSubject.data.Country
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            City:
+            <div class="col-md-10">
+                @Model.Credential.unsignedCredential.credentialSubject.data.City
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            Passport number:
+            <div class="col-md-10">
+                @Model.Credential.unsignedCredential.credentialSubject.data.PassportNumber
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            Passport photo:
+            <div class="col-md-10">
+                <img src="@Model.Credential.unsignedCredential.credentialSubject.data.Passport" alt="Passport" />
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            National credential number:
+            <div class="col-md-10">
+                @Model.Credential.unsignedCredential.credentialSubject.data.NationalDocumentNumber
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            National credential photo:
+            <div class="col-md-10">
+                <img src="@Model.Credential.unsignedCredential.credentialSubject.data.NationalDocument" alt="NationalDocument" />
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="col-10 mx-auto col-lg-7">
+            Person photo:
+            <div class="col-md-10">
+                <img src="@Model.Credential.unsignedCredential.credentialSubject.data.Photo" alt="Photo" />
+            </div>
+        </div>
+    </div>
+
+   
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sign this credential" class="btn btn-success btn-lg px-4" />
+            </div>
+        </div>
+}

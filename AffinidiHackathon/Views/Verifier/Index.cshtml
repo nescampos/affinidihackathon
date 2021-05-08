@@ -1,0 +1,36 @@
+﻿@model AffinidiHackathon.Models.IndexVerifierViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Verify credential</h2>
+
+
+@using (Html.BeginForm(null, null, FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+{
+    <p>Please enter the shared url:</p>
+    @Html.TextBox("urlCredential", Model.Url, new { @class = "col-md-5 control-label" })
+
+    <input type="submit" value="Verify" class="btn btn-primary btn-lg px-4 me-sm-3" />
+}
+
+@if (Model.Credential != null)
+{
+    if (Model.Verified.isValid)
+    {
+        <h3 class="display-4 fw-bold lh-1 mb-3">This credential is valid</h3>
+    }
+    else
+    {
+        <h3 class="display-4 fw-bold lh-1 mb-3">This credential is not valid</h3>
+    }
+    if (Model.Verified.errors != null && Model.Verified.errors.Any())
+    {
+        <ul>
+            @foreach (var error in Model.Verified.errors)
+            {
+                <li>@error</li>
+            }
+        </ul>
+    }
+}

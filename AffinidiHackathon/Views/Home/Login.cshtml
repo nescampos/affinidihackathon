@@ -1,0 +1,45 @@
+﻿@model AffinidiHackathon.Models.SignupViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+@ViewBag.Message
+@ViewBag.Error
+
+
+
+
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3">Use an account to log in.</h1>
+            <p class="col-lg-10 fs-4">You can log in or sign up to create new credentials.</p>
+        </div>
+        <div class="col-10 mx-auto col-lg-5">
+            @using (Html.BeginForm("Login", "Home", null, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-floating mb-3">
+
+                    @Html.TextBoxFor(m => m.Form.username, new { @class = "form-control", placeholder = "username",required= "required" })
+                    @Html.LabelFor(m => m.Form.username, new { @class = "col-md-2 control-label" })
+                    @Html.ValidationMessageFor(m => m.Form.username, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-floating mb-3">
+
+                    @Html.PasswordFor(m => m.Form.password, new { @class = "form-control", placeholder = "Password", required = "required" })
+                    @Html.LabelFor(m => m.Form.password, new { @class = "col-md-2 control-label" })
+                    @Html.ValidationMessageFor(m => m.Form.password, "", new { @class = "text-danger" })
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                <hr class="my-4">
+                @Html.ActionLink("Register as a new user", "SignUp", null, new { @class = "btn btn-default" })
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
